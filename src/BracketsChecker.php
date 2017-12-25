@@ -4,11 +4,23 @@ namespace Gukasov\BracketsChecker;
 
 use Gukasov\BracketsChecker\Exceptions\InvalidArgumentException;
 
+/**
+ * Class BracketsChecker
+ * @package Gukasov\BracketsChecker
+ */
 class BracketsChecker
 {
 
+	/**
+	 * @var string
+	 */
 	protected $string;
 
+	/**
+	 * BracketsChecker constructor.
+	 * @param string $str
+	 * @throws InvalidArgumentException
+	 */
 	public function __construct(string $str)
 	{
 		$this->string = $str;
@@ -16,6 +28,9 @@ class BracketsChecker
 		$this->checkString();
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function isCorrectSequence(): bool
 	{
 		// use string that contains only brackets for checking
@@ -41,6 +56,9 @@ class BracketsChecker
 		return $counter === 0;
 	}
 
+	/**
+	 * @throws InvalidArgumentException
+	 */
 	protected function checkString()
 	{
 		if (preg_match('~[^\s\(\)]~', $this->string)) {

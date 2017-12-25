@@ -6,6 +6,10 @@ use Gukasov\BracketsChecker\BracketsChecker;
 use Gukasov\BracketsChecker\Exceptions\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class BracketsCheckerTest
+ * @package Tests\Unit
+ */
 class BracketsCheckerTest extends TestCase
 {
 	/** @test */
