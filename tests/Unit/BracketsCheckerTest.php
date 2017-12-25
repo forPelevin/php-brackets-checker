@@ -41,4 +41,14 @@ class BracketsCheckerTest extends TestCase
 
 	    new BracketsChecker($string);
 	}
+	
+	/** @test */
+	public function the_checker_throws_exception_if_string_is_empty()
+	{
+		$this->expectException(InvalidArgumentException::class);
+
+		$string = '';
+
+		new BracketsChecker($string);
+	}
 }

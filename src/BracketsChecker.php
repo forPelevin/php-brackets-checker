@@ -23,6 +23,15 @@ class BracketsChecker
 	 */
 	public function __construct(string $str)
 	{
+		$this->setString($str);
+	}
+
+	/**
+	 * @param string $str
+	 * @throws InvalidArgumentException
+	 */
+	public function setString(string $str)
+	{
 		$this->string = $str;
 
 		$this->checkString();
@@ -61,7 +70,7 @@ class BracketsChecker
 	 */
 	protected function checkString()
 	{
-		if (preg_match('~[^\s\(\)]~', $this->string)) {
+		if (!$this->string || preg_match('~[^\s\(\)]~', $this->string)) {
 			throw new InvalidArgumentException;
 		}
 	}
