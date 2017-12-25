@@ -1,6 +1,6 @@
 <?php
 
-namespace Gukasov\Exceptions;
+namespace Gukasov\BracketsChecker\Exceptions;
 
 class InvalidArgumentException extends \Exception
 {

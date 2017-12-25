@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use Gukasov\BracketsChecker\BracketsChecker;
-use Gukasov\Exceptions\InvalidArgumentException;
+use Gukasov\BracketsChecker\Exceptions\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 class BracketsCheckerTest extends TestCase

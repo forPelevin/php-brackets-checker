@@ -2,7 +2,7 @@
 
 namespace Gukasov\BracketsChecker;
 
-use Gukasov\Exceptions\InvalidArgumentException;
+use Gukasov\BracketsChecker\Exceptions\InvalidArgumentException;
 
 class BracketsChecker
 {
