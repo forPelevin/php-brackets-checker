@@ -16,7 +16,7 @@ class BracketsChecker
 		$this->checkString();
 	}
 
-	public function isCorrectSequence()
+	public function isCorrectSequence(): bool
 	{
 		// use string that contains only brackets for checking
 		$bracketsString = preg_replace('~[^\(\)]~', '', $this->string);

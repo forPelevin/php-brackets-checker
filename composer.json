@@ -1,5 +1,5 @@
 {
-  "name": "gukasov/php_brackets_checker",
+  "name": "gukasov/php-brackets-checker",
   "description": "The library is for easy sensible checking of bracket sequences in strings",
   "minimum-stability": "stable",
   "license": "MIT",
