@@ -1,0 +1,26 @@
+{
+  "name": "gukasov/php_brackets_checker",
+  "description": "The library is for easy sensible checking of bracket sequences in strings",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Vlad Gukasov",
+      "email": "forpelevin@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.5"
+  },
+  "autoload": {
+    "classmap": ["src"]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  }
+}
