@@ -11,9 +11,9 @@ composer require gukasov/php_brackets_checker
 
 use Gukasov\BracketsChecker\BracketsChecker;
 
-$checker = new BracketsChecker('(( ) ())');
+$checker = new BracketsChecker();
 
-$checker->isCorrectSequence(); 
+$checker->isCorrectSequence('(( ) ())'); 
 // returns True
 ```
 
