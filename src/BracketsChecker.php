@@ -6,10 +6,6 @@ namespace Gukasov\BracketsChecker;
  * Class BracketsChecker
  * @package Gukasov\BracketsChecker
  */
-/**
- * Class BracketsChecker
- * @package Gukasov\BracketsChecker
- */
 class BracketsChecker
 {
 
