@@ -17,7 +17,7 @@ class BracketsCheckerTest extends TestCase
     {
         $checker = new BracketsChecker();
 
-        $this->assertTrue($checker->isCorrectSequence("((\t) \r ( \n {} []))"));
+        $this->assertTrue($checker->isCorrectSequence("((\t) \r ( \n ))"));
     }
 
     /** @test */

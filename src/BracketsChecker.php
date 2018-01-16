@@ -6,8 +6,25 @@ namespace Gukasov\BracketsChecker;
  * Class BracketsChecker
  * @package Gukasov\BracketsChecker
  */
+/**
+ * Class BracketsChecker
+ * @package Gukasov\BracketsChecker
+ */
 class BracketsChecker
 {
+
+    /**
+     * @var Brackets
+     */
+    protected $brackets;
+
+    /**
+     * BracketsChecker constructor.
+     */
+    public function __construct()
+    {
+        $this->brackets = new Brackets();
+    }
 
     /**
      * @param string $string
@@ -43,16 +60,18 @@ class BracketsChecker
         for ($i = 0; $i < mb_strlen($bracketsString); $i++) {
             $char = $bracketsString[$i];
 
-            if ($bracketsStack->isOpeningBracket($char)) {
+            if ($this->brackets->isOpening($char)) {
                 $bracketsStack->put($char);
 
                 continue;
             }
 
-            if ($bracketsStack->isClosingBracket($char)) {
-                $hasOpeningBracket = $bracketsStack->checkForClosing($char);
+            if ($this->brackets->isClosing($char)) {
+                $openingBracket = $bracketsStack->fetch();
 
-                if (! $hasOpeningBracket) {
+                $sameType = $this->brackets->isSame($openingBracket, $char);
+
+                if (! $sameType) {
                     return false;
                 }
 
