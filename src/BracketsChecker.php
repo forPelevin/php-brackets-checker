@@ -2,8 +2,6 @@
 
 namespace Gukasov\BracketsChecker;
 
-use Gukasov\BracketsChecker\Exceptions\InvalidArgumentException;
-
 /**
  * Class BracketsChecker
  * @package Gukasov\BracketsChecker
@@ -11,67 +9,59 @@ use Gukasov\BracketsChecker\Exceptions\InvalidArgumentException;
 class BracketsChecker
 {
 
-	/**
-	 * @var string
-	 */
-	protected $string;
+    /**
+     * @param string $string
+     * @return string
+     */
+    public function clearSpacesIn(string $string): string
+    {
+        return preg_replace('/[\s]/', '', $string);
+    }
 
-	/**
-	 * BracketsChecker constructor.
-	 * @param string $str
-	 * @throws InvalidArgumentException
-	 */
-	public function __construct(string $str)
-	{
-		$this->setString($str);
-	}
+    /**
+     * @param string $string
+     */
+    protected function isValidString(string $string)
+    {
+        if (!$string) {
+            throw new \InvalidArgumentException('The given string is empty');
+        }
+    }
 
-	/**
-	 * @param string $str
-	 * @throws InvalidArgumentException
-	 */
-	public function setString(string $str)
-	{
-		$this->string = $str;
+    /**
+     * @param string $string
+     * @return bool
+     */
+    public function isCorrectSequence(string $string): bool
+    {
+        $this->isValidString($string);
 
-		$this->checkString();
-	}
+        $bracketsString = $this->clearSpacesIn($string);
 
-	/**
-	 * @return bool
-	 */
-	public function isCorrectSequence(): bool
-	{
-		// use string that contains only brackets for checking
-		$bracketsString = preg_replace('~[^\(\)]~', '', $this->string);
+        $bracketsStack = new BracketsStack();
 
-		$stringLength = mb_strlen($bracketsString);
+        for ($i = 0; $i < mb_strlen($bracketsString); $i++) {
+            $char = $bracketsString[$i];
 
-		$counter = 0;
+            if ($bracketsStack->isOpeningBracket($char)) {
+                $bracketsStack->put($char);
 
-		for ($i = 0; $i < $stringLength; $i++) {
-			$bracketsString[$i] === '('
-				? $counter++
-				: $counter--;
+                continue;
+            }
 
-			// counter has negative value if sequence is broken
-			if ($counter < 0) {
-				return false;
-			}
-		}
+            if ($bracketsStack->isClosingBracket($char)) {
+                $hasOpeningBracket = $bracketsStack->checkForClosing($char);
 
-		// as a result count of opened brackets
-		// must be equally to count of closed brackets
-		return $counter === 0;
-	}
+                if (! $hasOpeningBracket) {
+                    return false;
+                }
 
-	/**
-	 * @throws InvalidArgumentException
-	 */
-	protected function checkString()
-	{
-		if (!$this->string || preg_match('~[^\s\(\)]~', $this->string)) {
-			throw new InvalidArgumentException;
-		}
-	}
+                continue;
+            }
+
+            throw new \InvalidArgumentException("The string contains invalid char: {$char}");
+        }
+
+        return $bracketsStack->isEmpty();
+    }
 }
