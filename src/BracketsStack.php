@@ -12,7 +12,7 @@ class BracketsStack
     /**
      * @var array
      */
-    protected $stack;
+    protected $stack = [];
 
     /**
      * @param string $bracket
