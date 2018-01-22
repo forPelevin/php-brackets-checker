@@ -26,6 +26,7 @@ class BracketsStack
     }
 
     /**
+     * Fetch element from the stack
      * @return mixed
      */
     public function fetch()
